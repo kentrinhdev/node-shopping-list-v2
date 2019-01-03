@@ -32,7 +32,6 @@ app.get('/shopping-list', (req, res) => {
 });
 
 app.post('/shopping-list', jsonParser, (req, res) => {
-  // ensure `name` and `budget` are in request body
   const requiredFields = ['name', 'budget'];
   for (let i=0; i<requiredFields.length; i++) {
     const field = requiredFields[i];
@@ -46,7 +45,6 @@ app.post('/shopping-list', jsonParser, (req, res) => {
   const item = ShoppingList.create(req.body.name, req.body.budget);
   res.status(201).json(item);
 });
-
 
 app.get('/recipes', (req, res) => {
   res.json(Recipes.get());
